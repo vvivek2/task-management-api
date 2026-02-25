@@ -24,6 +24,7 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> {})
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/task-management/auth/**").permitAll()
                         .requestMatchers("/api/task-management/admin/**").hasRole(String.valueOf(Role.ADMIN))

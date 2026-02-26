@@ -21,8 +21,10 @@ public class AuthController {
     }
 
     @PostMapping("login")
-    public JWTResponseDTO loginUser(@Valid @RequestBody LoginRequestDTO body) {
+    public String loginUser(@Valid @RequestBody LoginRequestDTO body) {
         return userService.login(body);
     }
+
+
 
 }

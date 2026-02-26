@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .cors(cors -> {})
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/task-management/auth/**").permitAll()
+                        .requestMatchers("/api/task-management/health").permitAll()
                         .requestMatchers("/api/task-management/admin/**").hasRole(String.valueOf(Role.ADMIN))
                         .anyRequest().authenticated()
                 )

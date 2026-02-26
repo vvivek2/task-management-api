@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public JWTResponseDTO login(LoginRequestDTO loginRequestDTO){
+    public String login(LoginRequestDTO loginRequestDTO){
         User userData = repository.findByUsername(loginRequestDTO.getUsername()).orElseThrow(() -> new RuntimeException("Invalid username"));
 
         if(!passwordEncoder.matches(loginRequestDTO.getPassword(), userData.getPassword())){
@@ -42,6 +42,6 @@ public class UserServiceImpl implements UserService {
         }
 
         String userToken = jwtUtil.generateToken(loginRequestDTO.getUsername());
-        return new JWTResponseDTO(userToken);
+        return userData.getUsername()+ " is logged in successfully" ;
     }
 }

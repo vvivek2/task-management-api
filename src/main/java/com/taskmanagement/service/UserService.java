@@ -10,6 +10,6 @@ import java.util.UUID;
 public interface UserService {
 
     String registerUser(UserRequestDTO userRequestDTO);
-    JWTResponseDTO login(LoginRequestDTO loginRequestDTO);
+    String login(LoginRequestDTO loginRequestDTO);
 
 }

@@ -1,6 +1,7 @@
 package com.taskmanagement.service;
 
 import com.taskmanagement.dto.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,6 @@ import java.util.UUID;
 public interface UserService {
 
     String registerUser(UserRequestDTO userRequestDTO);
-    String login(LoginRequestDTO loginRequestDTO);
+    ResponseEntity<LoginResponseDTO> login(LoginRequestDTO loginRequestDTO);
 
 }

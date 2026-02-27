@@ -1,6 +1,5 @@
 package com.taskmanagement.service;
 
-import com.taskmanagement.dto.JWTResponseDTO;
 import com.taskmanagement.dto.LoginRequestDTO;
 import com.taskmanagement.dto.UserRequestDTO;
 import com.taskmanagement.model.Role;
@@ -35,10 +34,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String login(LoginRequestDTO loginRequestDTO){
-        User userData = repository.findByUsername(loginRequestDTO.getUsername()).orElseThrow(() -> new RuntimeException("Invalid username"));
+        User userData = repository.findByUsername(loginRequestDTO.getUsername()).orElse(null);
+
+        if(userData == null){
+            return "User not found";
+        }
 
         if(!passwordEncoder.matches(loginRequestDTO.getPassword(), userData.getPassword())){
-            throw new RuntimeException("Invalid Password");
+            return "Invalid password";
         }
 
         String userToken = jwtUtil.generateToken(loginRequestDTO.getUsername());

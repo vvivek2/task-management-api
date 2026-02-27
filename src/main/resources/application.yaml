@@ -1,21 +1,3 @@
 spring:
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-
-  redis:
-    host: localhost
-    port: 6379
-
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
+  profiles:
+    active: local
